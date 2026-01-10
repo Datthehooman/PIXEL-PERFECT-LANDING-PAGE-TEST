@@ -3,26 +3,259 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>
-      New Maximum Potency Formula - Lymphatic Drainage Capsules by Sculptiqu –
-      Sculptique
+      New Maximum Potency Formula - Lymphatic Drainage Capsules by Sculptique
     </title>
+
     <link rel="icon" type="image/png" href="/assets/icons/fav.webp" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
-      href="https://fonts.googleapis.com/css2?
-      family=Lora:wght@400;500;600;700&
-      family=Nunito:wght@300;400;500;600;700&
-      family=Trirong:wght@400;500;600&
-      family=Montserrat:wght@400;500;600&
-      display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="/output.css" />
+
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        scrollbar-width: none;
+      }
+    </style>
   </head>
 
-  <body>
-    <div class="bg-red-500">Test</div>
+  <body class="font-body bg-white text-black">
+    <!-- LOGO -->
+    <section class="p-3">
+      <div class="max-w-40 mx-auto">
+        <img src="/assets/images/logo_main.avif" alt="Sculptique logo" />
+      </div>
+    </section>
+
+    <!-- PRODUCT MAIN (MOBILE) -->
+    <section class="max-w-xl mx-auto px-3.75 py-8 md:hidden">
+      <!-- MAIN CAROUSEL -->
+      <div class="relative">
+        <div class="embla__viewport overflow-hidden" id="mainViewport">
+          <div class="embla__container flex">
+            <!-- Slides -->
+            <div class="embla__slide shrink-0 w-full relative">
+              <img
+                src="assets/images/product_main.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+              <!-- Sale tag -->
+              <div class="absolute top-4 right-4 z-10 size-20">
+                <img src="/assets/images/nysale.avif" alt="sale tag" />
+              </div>
+              <button
+                class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/85 border border-black rounded-full px-6 py-2 text-sm flex justify-center items-center gap-2"
+              >
+                <span class="size-6">
+                  <img src="/assets/icons/leaves.png" alt="leaves" />
+                </span>
+
+                <span
+                  class="font-ui text-nowrap leading-6 tracking-[.1rem] text-black/65"
+                  >Nutritional Information</span
+                >
+              </button>
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_2.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_3.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_4.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_5.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_6.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_7.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_8.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_9.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_10.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_11.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_12.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+            <div class="embla__slide shrink-0 w-full">
+              <img
+                src="assets/images/product_13.webp"
+                class="w-full aspect-square object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrows -->
+        <button
+          id="mainPrev"
+          class="absolute left-6 top-1/2 -translate-y-1/2 z-10 cursor-pointer size-8"
+        >
+          <img src="/assets/icons/arrow-left-circle.webp" alt="left arrow" />
+        </button>
+
+        <button
+          id="mainNext"
+          class="absolute right-6 top-1/2 -translate-y-1/2 z-10 cursor-pointer size-8"
+        >
+          <img src="/assets/icons/arrow-right-circle.webp" alt="right arrow" />
+        </button>
+      </div>
+
+      <!-- THUMB CAROUSEL -->
+      <div class="mt-2">
+        <div
+          class="embla__viewport overflow-hidden no-scrollbar"
+          id="thumbViewport"
+        >
+          <div class="embla__container flex">
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_main.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_2.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_3.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_4.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_5.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_6.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_7.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_8.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_9.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_10.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_11.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_12.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+            <button class="embla__thumb shrink-0 w-1/4 p-1">
+              <img
+                src="assets/images/product_13.webp"
+                class="w-full rounded-lg"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- new section -->
+    <section>
+      <div class="h-500 w-full"></div>
+    </section>
+
+    <!-- Embla Carousel CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/embla-carousel@8/embla-carousel.umd.js"></script>
+    <script src="/main.js"></script>
   </body>
 </html>
