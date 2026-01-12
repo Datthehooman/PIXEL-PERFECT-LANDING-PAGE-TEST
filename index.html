@@ -22,12 +22,6 @@
     <link rel="stylesheet" href="/output.css" />
 
     <style>
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        scrollbar-width: none;
-      }
       .iframe.frontrow {
         display: none;
         position: fixed;
@@ -284,7 +278,7 @@
             </div>
             <button
               id="openNutritionModal"
-              class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/85 border border-black rounded-full px-6 py-2 text-sm flex justify-center items-center gap-2 transition-transform active:scale-95 hover:bg-white"
+              class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/85 border border-black rounded-full px-6 py-2 text-sm flex justify-center items-center gap-2 transition-transform active:scale-95 hover:bg-white cursor-pointer"
             >
               <span class="size-6">
                 <img src="/assets/icons/leaves.png" alt="leaves" />
@@ -706,12 +700,13 @@
               </g>
             </svg>
           </div>
-          <div class="text-xs">
+          <div class="text-xs md:text-base">
             <p>
               Delivered on
-              <span class="bg-emerald-500 py-0.5 px-1 rounded-sm text-white"
-                >Thursday, 15 January</span
-              >
+              <span
+                id="deliveryDate"
+                class="bg-emerald-500 py-0.5 px-1 rounded-sm text-white"
+              ></span>
               with Express Shipping
             </p>
           </div>
@@ -720,84 +715,96 @@
         <!-- ATC -->
         <a
           href="https://pay.trysculptique.com/checkout2?products=763:1"
-          class="w-full bg-[#1F1F1F] hover:bg-black text-white py-4 rounded-md font-medium mb-3 uppercase transition-colors shadow-lg block text-center"
+          class="w-full bg-black hover:bg-black/80 text-white py-4 rounded-md font-bold mb-3 uppercase transition-colors shadow-lg block text-center text-lg"
         >
           ADD TO CART
         </a>
 
-        <div
-          class="flex justify-between items-center text-[11px] mb-6 px-1 font-medium"
-        >
-          <div class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 17 17" fill="currentColor">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M14.583 12.1713C14.8698 12.1333 15.2001 12.1658 15.2331 12.5409L15.4195 14.6275C15.4683 15.1837 14.6219 15.2591 14.5729 14.7009L14.4664 13.5087C11.0241 17.4806 4.69181 17.0524 1.8463 12.5832C0.813943 10.9619 0.373055 8.97183 0.729143 6.97041C0.826743 6.41646 1.66639 6.56543 1.56914 7.11708C0.93661 10.7064 3.13963 14.1944 6.67777 15.1423C9.24097 15.8291 11.929 15.0161 13.687 13.1046L12.7599 13.1875C12.2036 13.2364 12.1283 12.39 12.6865 12.3409L14.583 12.1713ZM4.40861 3.48455L3.31261 3.58232C5.07048 1.67103 7.75883 0.858057 10.3219 1.54481C13.86 2.4929 16.063 5.98072 15.4305 9.57006C15.3332 10.1217 16.1729 10.2707 16.2705 9.71672C16.6267 7.71512 16.1857 5.72526 15.1533 4.10392C12.3587 -0.285054 6.18194 -0.791543 2.68932 3.00366L2.59723 1.97219C2.54817 1.41397 1.70177 1.48917 1.75065 2.04561L1.93554 4.11495C1.95314 4.36881 2.16274 4.54428 2.41768 4.51548L4.48203 4.33112C5.03972 4.28206 4.96559 3.43619 4.40861 3.48455Z"
-              ></path>
-            </svg>
-            <span>Refills Ship Bi-Monthly</span>
+        <div class="flex justify-center items-center text-xs">
+          <div class="flex items-center gap-2">
+            <div class="size-3.5 md:size-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full h-auto"
+                viewBox="0 0 17 17"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M14.583 12.1713C14.8698 12.1333 15.2001 12.1658 15.2331 12.5409L15.4195 14.6275C15.4683 15.1837 14.6219 15.2591 14.5729 14.7009L14.4664 13.5087C11.0241 17.4806 4.69181 17.0524 1.8463 12.5832C0.813943 10.9619 0.373055 8.97183 0.729143 6.97041C0.826743 6.41646 1.66639 6.56543 1.56914 7.11708C0.93661 10.7064 3.13963 14.1944 6.67777 15.1423C9.24097 15.8291 11.929 15.0161 13.687 13.1046L12.7599 13.1875C12.2036 13.2364 12.1283 12.39 12.6865 12.3409L14.583 12.1713ZM4.40861 3.48455L3.31261 3.58232C5.07048 1.67103 7.75883 0.858057 10.3219 1.54481C13.86 2.4929 16.063 5.98072 15.4305 9.57006C15.3332 10.1217 16.1729 10.2707 16.2705 9.71672C16.6267 7.71512 16.1857 5.72526 15.1533 4.10392C12.3587 -0.285054 6.18194 -0.791543 2.68932 3.00366L2.59723 1.97219C2.54817 1.41397 1.70177 1.48917 1.75065 2.04561L1.93554 4.11495C1.95314 4.36881 2.16274 4.54428 2.41768 4.51548L4.48203 4.33112C5.03972 4.28206 4.96559 3.43619 4.40861 3.48455Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+            <div class="border-r-black border-r border-solid pr-4">
+              <p class="product_atc-refills hidden" data="1">
+                Refills Ship Monthly
+              </p>
+              <p class="product_atc-refills" data="2">
+                Refills Ship Bi-Monthly
+              </p>
+              <p class="product_atc-refills hidden" data="3">
+                Refills Ship Every 12 Week
+              </p>
+            </div>
           </div>
-          <div class="flex items-center gap-1.5">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0779/0673/9384/files/clock.webp"
-              class="w-3.5 h-3.5"
-            />
-            <span>Stop or Cancel Anytime</span>
+          <div class="flex items-center gap-2 pl-4">
+            <div class="size-3.5 md:size-5">
+              <img src="assets/icons/clock.webp" />
+            </div>
+            <div>
+              <p>Stop or Cancel Anytime</p>
+            </div>
           </div>
         </div>
 
         <!-- Payment Icons -->
-        <img
-          src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_1000003454.png?v=1752066654"
-          class="w-full h-auto mb-6"
-        />
+        <img src="assets/images/payments.avif" class="w-full h-auto my-4" />
 
         <!-- Add to Cart Badge Image -->
         <img
-          src="//trysculptique.com/cdn/shop/files/CTA_Button_Add_To_Cart_8b5e7dd2-d716-4b24-a339-d8f27d86e61a.png?v=1766758486"
-          class="w-full h-auto mb-6"
+          src="assets/images/Add_to_cart_badge.avif"
+          class="w-full h-auto mb-3"
         />
 
         <!-- Guarantees -->
-        <div class="grid grid-cols-2 gap-3 mb-8">
-          <div class="flex items-center gap-3">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/60-days_11622780_1.png?v=1752066864"
-              class="w-9 h-9 object-contain"
-            />
-            <span class="text-[11px]">60-Day Money-Back Guarantee</span>
+        <div>
+          <div class="flex items-center gap-2 my-4">
+            <div class="w-1/20">
+              <img src="assets/icons/60-days.webp" class="w-full h-auto" />
+            </div>
+
+            <span>60-Day Money-Back Guarantee</span>
           </div>
-          <div class="flex items-center gap-3">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/Frame_1000003293.png?v=1752066864"
-              class="w-9 h-9 object-contain"
-            />
-            <span class="text-[11px]">Free Shipping From USA Included</span>
+          <div class="flex items-center gap-2 my-4">
+            <div class="w-1/20">
+              <img src="assets/icons/us_flag.webp" class="w-full h-auto" />
+            </div>
+            <span>Free Shipping From USA Included</span>
           </div>
         </div>
 
         <!-- Testimonial -->
-        <div class="bg-[#F9F7F2] p-6 rounded-xl border border-[#EAEAEA] mb-8">
-          <div class="flex items-center gap-4 mb-4">
-            <img
-              src="//trysculptique.com/cdn/shop/files/AI_Nurse_Holding_TORC_2_efcbd677-7242-4cb2-9f99-ad1e3726b19b.png?v=1752500889"
-              class="size-12 rounded-full object-cover"
-            />
-            <div>
-              <p class="text-sm">
+        <div class="bg-neutral-warm-50 p-3 rounded-xl mt-6">
+          <div class="flex items-center gap-4 mb-2">
+            <div class="w-3/20">
+              <img src="assets/images/AI_Nurse.webp" class="w-full" />
+            </div>
+            <div class="w-full">
+              <p class="gap-2 flex items-center">
                 Margaret Ellison | FL
-                <span class="text-green-600 text-[11px] ml-1"
-                  >✓ Verified Customer</span
-                >
+                <span class="flex items-center max-w-30"
+                  ><img
+                    src="/assets/images/verified_customer.png"
+                    alt="verified customer"
+                    class="w-full"
+                /></span>
               </p>
-              <img
-                src="https://cdn.shopify.com/s/files/1/0917/5649/5191/files/stars-4.5_1.png?v=1752068267"
-                class="h-3 w-auto mt-1"
-              />
+              <img src="assets/images/stars.png" class="max-w-25 mt-1.5" />
             </div>
           </div>
-          <p class="">
+          <p class="tracking-normal">
             <strong>Even my husband noticed... the spark came back.</strong
             ><br /><br />
             After years of hiding under coverups, picking apart my body, and
@@ -811,10 +818,10 @@
         </div>
 
         <!-- Accordions -->
-        <div class="space-y-4">
+        <div class="space-y-4 mt-4">
           <!-- 1 -->
           <details
-            class="group bg-white border border-gray-200 rounded-lg overflow-hidden"
+            class="group bg-white border border-gray-200 rounded-3xl overflow-hidden"
           >
             <summary
               class="flex justify-between items-center p-4 cursor-pointer list-none select-none hover:bg-gray-50 transition-colors"
@@ -835,51 +842,59 @@
                 </svg>
               </div>
             </summary>
-            <div class="px-4 pb-4 text-sm">
-              <p class="mb-2"><strong>Sculptique Ingredients:</strong></p>
-              <ul class="list-disc pl-5 space-y-1">
-                <li>
-                  <strong>Echinacea purpurea Extract</strong> – Known for its
-                  anti-inflammatory properties, it may support skin health.
-                </li>
-                <li>
-                  <strong>Dandelion Extract</strong> – Traditionally used as a
-                  diuretic, it may help reduce water retention.
-                </li>
-                <li>
-                  <strong>Burdock Powder</strong> – Contains antioxidants that
-                  may promote skin clarity.
-                </li>
-                <li>
-                  <strong>Cleavers Extract</strong> – Believed to support
-                  lymphatic drainage and detoxification.
-                </li>
-                <li>
-                  <strong>Rutin</strong> – A flavonoid that may strengthen blood
-                  vessels and improve circulation.
-                </li>
-                <li>
-                  <strong>Bromelain Powder</strong> – An enzyme from pineapple
-                  that may reduce inflammation and support tissue repair.
-                </li>
-                <li>
-                  <strong>Lemon Powder</strong> – Rich in vitamin C, it may aid
-                  in collagen production and skin rejuvenation.
-                </li>
-                <li>
-                  <strong>Kelp Extract</strong> – A source of iodine and
-                  minerals that may support skin metabolism.
-                </li>
-              </ul>
-              <p class="mt-2">
-                These natural ingredients work together to reduce puffiness,
-                bloating, fluid retention.
-              </p>
+            <div
+              class="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out"
+            >
+              <div class="overflow-hidden">
+                <div class="px-4 pb-4 text-sm">
+                  <p class="mb-2"><strong>Sculptique Ingredients:</strong></p>
+                  <ul class="list-disc pl-5 space-y-1">
+                    <li>
+                      <strong>Echinacea purpurea Extract</strong> – Known for
+                      its anti-inflammatory properties, it may support skin
+                      health.
+                    </li>
+                    <li>
+                      <strong>Dandelion Extract</strong> – Traditionally used as
+                      a diuretic, it may help reduce water retention.
+                    </li>
+                    <li>
+                      <strong>Burdock Powder</strong> – Contains antioxidants
+                      that may promote skin clarity.
+                    </li>
+                    <li>
+                      <strong>Cleavers Extract</strong> – Believed to support
+                      lymphatic drainage and detoxification.
+                    </li>
+                    <li>
+                      <strong>Rutin</strong> – A flavonoid that may strengthen
+                      blood vessels and improve circulation.
+                    </li>
+                    <li>
+                      <strong>Bromelain Powder</strong> – An enzyme from
+                      pineapple that may reduce inflammation and support tissue
+                      repair.
+                    </li>
+                    <li>
+                      <strong>Lemon Powder</strong> – Rich in vitamin C, it may
+                      aid in collagen production and skin rejuvenation.
+                    </li>
+                    <li>
+                      <strong>Kelp Extract</strong> – A source of iodine and
+                      minerals that may support skin metabolism.
+                    </li>
+                  </ul>
+                  <p class="mt-2">
+                    These natural ingredients work together to reduce puffiness,
+                    bloating, fluid retention.
+                  </p>
+                </div>
+              </div>
             </div>
           </details>
           <!-- 2 -->
           <details
-            class="group bg-white border border-gray-200 rounded-lg overflow-hidden"
+            class="group bg-white border border-gray-200 rounded-3xl overflow-hidden"
           >
             <summary
               class="flex justify-between items-center p-4 cursor-pointer list-none select-none hover:bg-gray-50 transition-colors"
@@ -900,19 +915,25 @@
                 </svg>
               </div>
             </summary>
-            <div class="px-4 pb-4 text-sm">
-              <p>
-                Sculptique works by improving blood flow and supporting
-                lymphatic drainage to reduce fluid buildup that causes
-                puffiness, inflammation, and water retention. It also reduces
-                inflammation and boosts collagen production to help skin become
-                firmer and smoother.
-              </p>
+            <div
+              class="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out"
+            >
+              <div class="overflow-hidden">
+                <div class="px-4 pb-4 text-sm">
+                  <p>
+                    Sculptique works by improving blood flow and supporting
+                    lymphatic drainage to reduce fluid buildup that causes
+                    puffiness, inflammation, and water retention. It also
+                    reduces inflammation and boosts collagen production to help
+                    skin become firmer and smoother.
+                  </p>
+                </div>
+              </div>
             </div>
           </details>
           <!-- 3 -->
           <details
-            class="group bg-white border border-gray-200 rounded-lg overflow-hidden"
+            class="group bg-white border border-gray-200 rounded-3xl overflow-hidden"
           >
             <summary
               class="flex justify-between items-center p-4 cursor-pointer list-none select-none hover:bg-gray-50 transition-colors"
@@ -933,20 +954,26 @@
                 </svg>
               </div>
             </summary>
-            <div class="px-4 pb-4 text-sm">
-              <p class="mb-2">
-                All of Sculptique orders get FREE shipping straight from our USA
-                warehouse. Orders are usually shipped out within 1-2 working
-                days, and you should receive the order within 3-7 working days
-                for domestic USA orders, and within 10 working days for
-                International orders.
-              </p>
-              <p>
-                We also offer a 60-day money back guarantee - if you are
-                unsatisfied with our product, you can take advantage of our
-                guarantee and ship back the product to us to get your return
-                within 60 days of receiving your order.
-              </p>
+            <div
+              class="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out"
+            >
+              <div class="overflow-hidden">
+                <div class="px-4 pb-4 text-sm">
+                  <p class="mb-2">
+                    All of Sculptique orders get FREE shipping straight from our
+                    USA warehouse. Orders are usually shipped out within 1-2
+                    working days, and you should receive the order within 3-7
+                    working days for domestic USA orders, and within 10 working
+                    days for International orders.
+                  </p>
+                  <p>
+                    We also offer a 60-day money back guarantee - if you are
+                    unsatisfied with our product, you can take advantage of our
+                    guarantee and ship back the product to us to get your return
+                    within 60 days of receiving your order.
+                  </p>
+                </div>
+              </div>
             </div>
           </details>
         </div>
@@ -956,7 +983,7 @@
     <!-- NUTRITION MODAL -->
     <div
       id="nutritionModal"
-      class="fixed inset-0 z-100 flex items-center justify-center bg-black/70 hidden px-4 transition-opacity duration-300 opacity-0"
+      class="fixed inset-0 z-100 hidden items-center justify-center bg-black/70 px-4 transition-opacity duration-300 opacity-0"
     >
       <div
         class="relative bg-white p-4 rounded-xl w-full md:w-auto md:max-w-md shadow-2xl transition-transform duration-300"
@@ -995,7 +1022,7 @@
         <!-- CTA Button -->
         <button
           id="closeNutritionModalCta"
-          class="w-full bg-black text-white py-4.5 rounded-lg my-4 hover:bg-black/80 transition-colors tracking-[0.06rem] leading-7 font-normal font-ui"
+          class="w-full bg-black text-white py-4.5 rounded-lg my-4 hover:bg-black/80 transition-colors tracking-[0.06rem] leading-7 font-normal font-ui cursor-pointer"
         >
           Try Lymphatic Drainage Risk-Free
         </button>

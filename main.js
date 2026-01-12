@@ -135,6 +135,9 @@ const options = [
 ];
 
 function selectOption(selectedOption) {
+  // Get the option index (1, 2, or 3)
+  const selectedIndex = options.indexOf(selectedOption) + 1;
+
   options.forEach((option) => {
     if (!option) return;
 
@@ -163,6 +166,17 @@ function selectOption(selectedOption) {
       if (radioDot) radioDot.classList.add("hidden");
     }
   });
+
+  // Toggle refill text based on selected option
+  const refillTexts = document.querySelectorAll(".product_atc-refills");
+  refillTexts.forEach((refillText) => {
+    const refillData = refillText.getAttribute("data");
+    if (refillData == selectedIndex) {
+      refillText.classList.remove("hidden");
+    } else {
+      refillText.classList.add("hidden");
+    }
+  });
 }
 
 // Attach Listeners
@@ -171,3 +185,50 @@ options.forEach((option) => {
     option.addEventListener("click", () => selectOption(option));
   }
 });
+
+// Initialize with option2 selected on page load
+if (options[1]) {
+  selectOption(options[1]);
+}
+
+/* ==========================================================================
+   DELIVERY DATE LOGIC
+   ========================================================================== */
+
+const deliveryDateElement = document.getElementById("deliveryDate");
+
+if (deliveryDateElement) {
+  const today = new Date();
+  const deliveryDate = new Date(today);
+  deliveryDate.setDate(today.getDate() + 3);
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const dayName = days[deliveryDate.getDay()];
+  const day = deliveryDate.getDate();
+  const monthName = months[deliveryDate.getMonth()];
+
+  deliveryDateElement.textContent = `${dayName}, ${day} ${monthName}`;
+}
