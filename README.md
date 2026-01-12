@@ -110,5 +110,10 @@ Lower sections of the page can be added without refactoring the existing structu
 
 - This project avoids copying source CSS or JavaScript from the original site
 - Third-party widgets are treated as black boxes, as they would be in a real production environment
-- Emphasis is placed on realistic front-end decision-making, not overengineering
+
 ```
+
+### Closing Note
+
+Thank you for the opportunity to challenge myself with this task.
+While the project is not fully complete, I hope this submission demonstrates my front-end decision-making, attention to detail, and approach to translating production designs into maintainable code.
