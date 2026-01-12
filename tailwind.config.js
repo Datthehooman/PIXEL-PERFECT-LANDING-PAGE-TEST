@@ -18,6 +18,12 @@ export default {
 
         success: "#0c7c00",
         danger: "#a60003",
+        "neutral-warm": {
+          50: "#f3eee0",
+        },
+        emerald: {
+          500: "#039869",
+        },
       },
 
       fontFamily: {
@@ -28,14 +34,23 @@ export default {
       },
 
       fontSize: {
-        xs: ["12px", { lineHeight: "1.3" }],
-        sm: ["14px", { lineHeight: "1.3" }],
-        base: ["16px", { lineHeight: "1.3" }],
-        lg: ["18px", { lineHeight: "1.3" }],
+        xs: ["12px", { lineHeight: "1.3", letterSpacing: ".6px" }],
+        sm: ["14px", { lineHeight: "1.3", letterSpacing: ".6px" }],
+        base: ["16px", { lineHeight: "1.3", letterSpacing: ".6px" }],
+        lg: ["18px", { lineHeight: "1.3", letterSpacing: ".6px" }],
 
-        h3: ["24px", { lineHeight: "1.3", fontWeight: "400" }],
-        h2: ["28px", { lineHeight: "1.3", fontWeight: "400" }],
-        h1: ["32px", { lineHeight: "1.3", fontWeight: "400" }],
+        h3: [
+          "24px",
+          { lineHeight: "1.4", fontWeight: "400", letterSpacing: ".6px" },
+        ],
+        h2: [
+          "28px",
+          { lineHeight: "1.4", fontWeight: "400", letterSpacing: ".6px" },
+        ],
+        h1: [
+          "32px",
+          { lineHeight: "1.3", fontWeight: "400", letterSpacing: ".6px" },
+        ],
       },
 
       borderRadius: {

@@ -1,6 +1,6 @@
-/* -----------------------------
-   ELEMENTS
------------------------------ */
+/* ==========================================================================
+   CAROUSEL LOGIC
+   ========================================================================== */
 
 const mainViewport = document.getElementById("mainViewport");
 const thumbViewport = document.getElementById("thumbViewport");
@@ -63,4 +63,111 @@ thumbButtons.forEach((thumb, index) => {
     mainEmbla.scrollTo(index);
     thumbEmbla.scrollTo(index);
   });
+});
+
+/* ==========================================================================
+   NUTRITION MODAL LOGIC
+   ========================================================================== */
+
+const nutritionModal = document.getElementById("nutritionModal");
+const nutritionModalContent = document.getElementById("nutritionModalContent");
+const closeNutritionModal = document.getElementById("closeNutritionModal");
+const closeNutritionModalCta = document.getElementById(
+  "closeNutritionModalCta"
+);
+
+// Open Modal
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#openNutritionModal")) {
+    if (nutritionModal) {
+      nutritionModal.classList.remove("hidden");
+      // Trigger reflow/repaint so transition works
+      requestAnimationFrame(() => {
+        nutritionModal.classList.remove("opacity-0");
+        if (nutritionModalContent) {
+          nutritionModalContent.classList.remove("scale-95");
+        }
+      });
+    }
+  }
+});
+
+// Close Modal Function
+const closeModal = () => {
+  if (nutritionModal) {
+    nutritionModal.classList.add("opacity-0");
+    if (nutritionModalContent) {
+      nutritionModalContent.classList.add("scale-95");
+    }
+    setTimeout(() => {
+      nutritionModal.classList.add("hidden");
+    }, 300);
+  }
+};
+
+// Close Button Listener
+if (closeNutritionModal) {
+  closeNutritionModal.addEventListener("click", closeModal);
+}
+
+// Close CTA Button Listener
+if (closeNutritionModalCta) {
+  closeNutritionModalCta.addEventListener("click", closeModal);
+}
+
+// Background Click Listener
+if (nutritionModal) {
+  nutritionModal.addEventListener("click", (e) => {
+    if (e.target === nutritionModal) {
+      closeModal();
+    }
+  });
+}
+
+/* ==========================================================================
+   BUNDLE SELECTION LOGIC
+   ========================================================================== */
+
+const options = [
+  document.getElementById("option1"),
+  document.getElementById("option2"),
+  document.getElementById("option3"),
+];
+
+function selectOption(selectedOption) {
+  options.forEach((option) => {
+    if (!option) return;
+
+    // Elements
+    const head = option.querySelector(".option-head");
+    const banner = option.querySelector(".option-banner");
+    const radioCircle = option.querySelector(".radio-circle");
+    const radioDot = option.querySelector(".radio-dot");
+
+    // Check if this is the selected one
+    const isSelected = option === selectedOption;
+
+    if (isSelected) {
+      // Selected Styles
+      if (banner) {
+        banner.classList.remove("bg-emerald-500/60");
+        banner.classList.add("bg-emerald-500");
+      }
+      if (radioDot) radioDot.classList.remove("hidden");
+    } else {
+      // Unselected Styles
+      if (banner) {
+        banner.classList.remove("bg-emerald-500");
+        banner.classList.add("bg-emerald-500/60");
+      }
+      if (radioDot) radioDot.classList.add("hidden");
+    }
+  });
+}
+
+// Attach Listeners
+options.forEach((option) => {
+  if (option) {
+    option.addEventListener("click", () => selectOption(option));
+  }
 });
